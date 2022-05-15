@@ -48,7 +48,6 @@ int main()
 	int X[100], n, z;
 	Zadanie T[100], Z[100];
 	vector<Zadanie> H;
-	Zadanie Temp;
 	string s = "data.00", s1, s2;
 	ifstream in(WEJ);
 	ofstream out(WYJ);
@@ -239,22 +238,30 @@ int schrage(int n,vector<Zadanie> R, int* X)
 {
 	vector<Zadanie> Q;
 	Zadanie Temp;
-	int r = n, q = 0, w = 0; 
-	int  t = 0, cmax = 0, cj=0;
+	int  t = 0, cmax = 0;
+
+	make_heap(Q.begin(), Q.end(), lesserQ());
 	
-	while(!R.empty())
+	do
 	{
-		pop_heap(R.begin(), R.end(), greaterR());
-		Temp=R.back();
-		R.pop_back();
-		if(t<Temp.r)
+		if(!R.empty() && R.front().r>t && Q.empty())
 		{
-			t=Temp.r;
+			t=R.front().r;
 		}
-		Q.push_back(Temp);
+		while(!R.empty()&&t>=R.front().r)
+		{
+			pop_heap(R.begin(), R.end(), greaterR());
+			Temp=R.back();
+			R.pop_back();
+			Q.push_back(Temp);
+			push_heap(Q.begin(), Q.end(), lesserQ());
+		}
+		pop_heap(Q.begin(), Q.end(), lesserQ());
+		Temp=Q.back();
+		Q.pop_back();
 		t+=Temp.p;
 		cmax=max(cmax,t + Temp.q);
-	}
+	}while(!Q.empty()||!R.empty());
 
 	return cmax;
 }

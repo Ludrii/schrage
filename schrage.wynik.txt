@@ -5,7 +5,32 @@ Schrage bez podziału na kopcu STL: 283
 Zbior danych nr 1
 Schrage bez podziału na tablicy: 3109
 Schrage z podziałem na tablicy: 3026
-Schrage bez podziału na kopcu STL: 3713
+Schrage bez podziału na kopcu STL: 3109
 Zbior danych nr 2
 Schrage bez podziału na tablicy: 3708
 Schrage z podziałem na tablicy: 3654
+Schrage bez podziału na kopcu STL: 3708
+Zbior danych nr 3
+Schrage bez podziału na tablicy: 3353
+Schrage z podziałem na tablicy: 3309
+Schrage bez podziału na kopcu STL: 3332
+Zbior danych nr 4
+Schrage bez podziału na tablicy: 3235
+Schrage z podziałem na tablicy: 3172
+Schrage bez podziału na kopcu STL: 3235
+Zbior danych nr 5
+Schrage bez podziału na tablicy: 3625
+Schrage z podziałem na tablicy: 3618
+Schrage bez podziału na kopcu STL: 3625
+Zbior danych nr 6
+Schrage bez podziału na tablicy: 3446
+Schrage z podziałem na tablicy: 3439
+Schrage bez podziału na kopcu STL: 3446
+Zbior danych nr 7
+Schrage bez podziału na tablicy: 3862
+Schrage z podziałem na tablicy: 3820
+Schrage bez podziału na kopcu STL: 3862
+Zbior danych nr 8
+Schrage bez podziału na tablicy: 3645
+Schrage z podziałem na tablicy: 3633
+Schrage bez podziału na kopcu STL: 3645
