@@ -1,0 +1,11 @@
+Zbior danych nr 0
+Schrage bez podziału na tablicy: 283
+Schrage z podziałem na tablicy: 221
+Schrage bez podziału na kopcu STL: 283
+Zbior danych nr 1
+Schrage bez podziału na tablicy: 3109
+Schrage z podziałem na tablicy: 3026
+Schrage bez podziału na kopcu STL: 3713
+Zbior danych nr 2
+Schrage bez podziału na tablicy: 3708
+Schrage z podziałem na tablicy: 3654
