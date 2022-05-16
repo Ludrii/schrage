@@ -21,27 +21,29 @@ struct Zadanie
 
 struct greaterR
 {
-	bool operator()(const Zadanie& a, const Zadanie& b) const
+	bool operator()(const Zadanie &a, const Zadanie &b) const
 	{
-		return a.r>b.r;
+		return a.r > b.r;
 	}
 };
 
 struct lesserQ
 {
-	bool operator()(const Zadanie& a, const Zadanie& b) const
+	bool operator()(const Zadanie &a, const Zadanie &b) const
 	{
-		return a.q<b.q;
+		return a.q < b.q;
 	}
 };
 
-void swap(Zadanie& a, Zadanie& b);
+void swap(Zadanie &a, Zadanie &b);
 
-int schrage(int n, Zadanie* T, int* X);
+int schrage(int n, Zadanie *T, int *X);
 
-int schrage(int n, vector<Zadanie> R, int* X);
+int schrage(int n, vector<Zadanie> R);
 
-int schrageZP(int n, Zadanie* T);
+int schrageZP(int n, Zadanie *T);
+
+int schrageZP(int n, vector<Zadanie> R);
 
 int main()
 {
@@ -65,24 +67,26 @@ int main()
 			T[j].id = j;
 			in >> T[j].r >> T[j].p >> T[j].q;
 			H.push_back(T[j]);
-			Z[j]=T[j];
+			Z[j] = T[j];
 		}
 
-		make_heap(H.begin(),H.end(),greaterR());
+		make_heap(H.begin(), H.end(), greaterR());
 
 		out << "Zbior danych nr " << i << endl;
 		z = schrage(n, T, X);
 		out << "Schrage bez podziału na tablicy: " << z << endl;
 		z = schrageZP(n, T);
 		out << "Schrage z podziałem na tablicy: " << z << endl;
-		z = schrage(n, H, X);
-		out << "Schrage bez podziału na kopcu STL: " << z <<endl;
+		z = schrage(n, H);
+		out << "Schrage bez podziału na kopcu STL: " << z << endl;
+		z = schrageZP(n, H);
+		out << "Schrage z podziałem na kopcu STL: " << z << endl;
 		H.clear();
 	}
 	cout << "Plik wynikowy - " << WYJ << endl;
 }
 
-void swap(Zadanie& a, Zadanie& b)
+void swap(Zadanie &a, Zadanie &b)
 {
 	swap(a.id, b.id);
 	swap(a.p, b.p);
@@ -90,16 +94,16 @@ void swap(Zadanie& a, Zadanie& b)
 	swap(a.r, b.r);
 }
 
-int schrage(int n, Zadanie* T, int* X)
+int schrage(int n, Zadanie *T, int *X)
 {
 	int R[100], Q[100];
-	int r = n, q = 0, w = 0; 
-	int  t = 0, cmax = 0;
+	int r = n, q = 0, w = 0;
+	int t = 0, cmax = 0;
 	for (int i = 0; i < n; i++)
 	{
 		R[i] = i;
 	}
-	for (int i = 0; i < n - 1; i++)	
+	for (int i = 0; i < n - 1; i++)
 	{
 		for (int j = 0; j < n - 1; j++)
 		{
@@ -112,7 +116,7 @@ int schrage(int n, Zadanie* T, int* X)
 	while (w != n)
 	{
 		if (r != 0)
-		{	
+		{
 			if (T[R[r - 1]].r <= t)
 			{
 				Q[q] = R[r - 1];
@@ -145,11 +149,11 @@ int schrage(int n, Zadanie* T, int* X)
 	return cmax;
 }
 
-int schrageZP(int n, Zadanie* T)
+int schrageZP(int n, Zadanie *T)
 {
-	int R[100], Q[100],pom[100];
+	int R[100], Q[100], pom[100];
 	int r = n, q = 0;
-	int  t = 0, cmax = 0;
+	int t = 0, cmax = 0;
 	int poz = 100;
 	int ile_zr = 0;
 	for (int i = 0; i < n; i++)
@@ -160,7 +164,7 @@ int schrageZP(int n, Zadanie* T)
 	{
 		R[i] = i;
 	}
-	for (int i = 0; i < n - 1; i++)			
+	for (int i = 0; i < n - 1; i++)
 	{
 		for (int j = 0; j < n - 1; j++)
 		{
@@ -174,12 +178,12 @@ int schrageZP(int n, Zadanie* T)
 	{
 		if (r != 0)
 		{
-			if (T[R[r-1]].r <= t)
+			if (T[R[r - 1]].r <= t)
 			{
 				Q[q] = R[r - 1];
 				q++;
 				r--;
-				for (int k = q - 1; k > 0; k--)			
+				for (int k = q - 1; k > 0; k--)
 				{
 					if (T[Q[k]].q < T[Q[k - 1]].q)
 					{
@@ -192,7 +196,7 @@ int schrageZP(int n, Zadanie* T)
 					{
 						Q[q] = poz;
 						swap(Q[q], Q[q - 1]);
-						q++;						
+						q++;
 						poz = 100;
 					}
 				}
@@ -216,7 +220,7 @@ int schrageZP(int n, Zadanie* T)
 			}
 			t += ile_zr;
 			pom[poz] -= ile_zr;
-			if (pom[poz]== 0)
+			if (pom[poz] == 0)
 			{
 				cmax = max(cmax, t + T[poz].q);
 				poz = 100;
@@ -234,34 +238,78 @@ int schrageZP(int n, Zadanie* T)
 	return cmax;
 }
 
-int schrage(int n,vector<Zadanie> R, int* X)
+int schrage(int n, vector<Zadanie> R)
 {
 	vector<Zadanie> Q;
 	Zadanie Temp;
-	int  t = 0, cmax = 0;
+	int t = 0, cmax = 0;
 
 	make_heap(Q.begin(), Q.end(), lesserQ());
-	
+
 	do
 	{
-		if(!R.empty() && R.front().r>t && Q.empty())
+		if (!R.empty() && R.front().r > t && Q.empty())
 		{
-			t=R.front().r;
+			t = R.front().r;
 		}
-		while(!R.empty()&&t>=R.front().r)
+		while (!R.empty() && t >= R.front().r)
 		{
 			pop_heap(R.begin(), R.end(), greaterR());
-			Temp=R.back();
+			Temp = R.back();
 			R.pop_back();
 			Q.push_back(Temp);
 			push_heap(Q.begin(), Q.end(), lesserQ());
 		}
 		pop_heap(Q.begin(), Q.end(), lesserQ());
-		Temp=Q.back();
+		Temp = Q.back();
 		Q.pop_back();
-		t+=Temp.p;
-		cmax=max(cmax,t + Temp.q);
-	}while(!Q.empty()||!R.empty());
+		t += Temp.p;
+		cmax = max(cmax, t + Temp.q);
+	} while (!Q.empty() || !R.empty());
+
+	return cmax;
+}
+
+int schrageZP(int n, vector<Zadanie> R)
+{
+	vector<Zadanie> Q;
+	Zadanie Temp;
+	int t = 0, cmax = 0, p0 = 0, p1 = 0;
+
+	make_heap(Q.begin(), Q.end(), lesserQ());
+
+	do
+	{
+		if (!R.empty() && R.front().r > t && Q.empty())
+		{
+			t = R.front().r;
+		}
+		while (!R.empty() && t >= R.front().r)
+		{
+			pop_heap(R.begin(), R.end(), greaterR());
+			Temp = R.back();
+			R.pop_back();
+			Q.push_back(Temp);
+			push_heap(Q.begin(), Q.end(), lesserQ());
+		}
+		pop_heap(Q.begin(), Q.end(), lesserQ());
+		Temp = Q.back();
+		Q.pop_back();
+		if (t + Temp.p <= R.front().r || R.empty())
+		{
+			t += Temp.p;
+			cmax = max(cmax, t + Temp.q);
+		}
+		else
+		{
+			p0 = t;
+			p1 = R.front().r;
+			Temp.p -= p1 - p0;
+			t = p1;
+			Q.push_back(Temp);
+			push_heap(Q.begin(), Q.end(), lesserQ());
+		}
+	} while (!Q.empty() || !R.empty());
 
 	return cmax;
 }

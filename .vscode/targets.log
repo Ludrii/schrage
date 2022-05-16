@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 15 19:56:29 2022
+# Make data base, printed on Mon May 16 15:33:36 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"pl","availableLanguages":{"*":"pl"},"_languagePackId":"c8befbfa7cd5d8527d842a3af66dca21.pl","_translationsConfigFile":"/home/maciej/.config/Code/clp/c8befbfa7cd5d8527d842a3af66dca21.pl/tcf.json","_cacheRoot":"/home/maciej/.config/Code/clp/c8befbfa7cd5d8527d842a3af66dca21.pl","_resolvedLanguagePackCoreLocation":"/home/maciej/.config/Code/clp/c8befbfa7cd5d8527d842a3af66dca21.pl/da15b6fd3ef856477bf6f4fb29ba1b7af717770d","_corruptedFile":"/home/maciej/.config/Code/clp/c8befbfa7cd5d8527d842a3af66dca21.pl/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:31615
+JOURNAL_STREAM = 8:32271
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -73,7 +73,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 986
+MANAGERPID = 976
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -87,7 +87,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/maciej-VirtualBox:@/tmp/.ICE-unix/1830,unix/maciej-VirtualBox:/tmp/.ICE-unix/1830
+SESSION_MANAGER = local/maciej-VirtualBox:@/tmp/.ICE-unix/1856,unix/maciej-VirtualBox:/tmp/.ICE-unix/1856
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -105,7 +105,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 7675a0d01745428aa440c142df0e847e
+INVOCATION_ID = 18299b9b86804e14bcb9da7642b9bea5
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/96/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -129,7 +129,7 @@ PWD = /home/maciej/windows/Studia/6semestr/spd/schrage
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1775
+SSH_AGENT_PID = 1799
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -181,7 +181,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-85c41041-4607-4691-8681-8d7ccdc5d7e6.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-497cbd27-3a7f-42df-bd15-84f69346eeb6.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -231,11 +231,11 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/9b2ed33a_1cca_4127_9b75_ee82e3a8a9ab
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0d5586ff_a950_4b9a_bee6_eb9bc311a257
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.119
+GNOME_TERMINAL_SERVICE = :1.118
 # default
 SUFFIXES := 
 # environment
@@ -255,7 +255,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3365
+VSCODE_PID = 3442
 # variable set hash-table stats:
 # Load=122/1024=12%, Rehash=0, Collisions=15/144=10%
 
@@ -278,8 +278,8 @@ VSCODE_PID = 3365
 # Not a target:
 all:
 #  Command line target.
-#  Implicit rule search has been done.
  
+#  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
 
@@ -324,6 +324,6 @@ GNUmakefile:
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Sun May 15 19:56:29 2022
+# Finished Make data base on Mon May 16 15:33:36 2022
 
  
