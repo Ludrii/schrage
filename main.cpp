@@ -35,21 +35,41 @@ struct lesserQ
 	}
 };
 
+struct Kopiec
+{
+	vector<Zadanie> Zadania;
+
+	Zadanie getRoot();
+	void _delete(int i);
+	void maxHeapify(int i);
+	void minHeapify(int i);
+	int parent(int i);
+	int left(int i);
+	int right(int i);
+	void linearSearchR(Zadanie Zad);
+	void linearSearchQ(Zadanie Zad);
+};
+
 void swap(Zadanie &a, Zadanie &b);
 
 int schrage(int n, Zadanie *T, int *X);
 
 int schrage(int n, vector<Zadanie> R);
 
+int schrage(int n, Kopiec R);
+
 int schrageZP(int n, Zadanie *T);
 
 int schrageZP(int n, vector<Zadanie> R);
+
+int schrageZP(int n, Kopiec R);
 
 int main()
 {
 	int X[100], n, z;
 	Zadanie T[100], Z[100];
 	vector<Zadanie> H;
+	Kopiec K;
 	string s = "data.00", s1, s2;
 	ifstream in(WEJ);
 	ofstream out(WYJ);
@@ -67,10 +87,12 @@ int main()
 			T[j].id = j;
 			in >> T[j].r >> T[j].p >> T[j].q;
 			H.push_back(T[j]);
+			K.Zadania.push_back(T[j]);
 			Z[j] = T[j];
 		}
 
 		make_heap(H.begin(), H.end(), greaterR());
+		K.minHeapify(0);
 
 		out << "Zbior danych nr " << i << endl;
 		z = schrage(n, T, X);
@@ -81,7 +103,12 @@ int main()
 		out << "Schrage bez podziału na kopcu STL: " << z << endl;
 		z = schrageZP(n, H);
 		out << "Schrage z podziałem na kopcu STL: " << z << endl;
+		z = schrage(n, K);
+		out << "Schrage bez podziału na własnym kopcu: " << z << endl;
+		z = schrageZP(n, K);
+		out << "Schrage z podziałem na własnym kopcu: " << z << endl;
 		H.clear();
+		K.Zadania.clear();
 	}
 	cout << "Plik wynikowy - " << WYJ << endl;
 }
@@ -310,6 +337,157 @@ int schrageZP(int n, vector<Zadanie> R)
 			push_heap(Q.begin(), Q.end(), lesserQ());
 		}
 	} while (!Q.empty() || !R.empty());
+
+	return cmax;
+}
+
+void Kopiec::linearSearchQ(Zadanie Zad)
+{
+	for (auto i : Zadania)
+	{
+		if (i.q == Zad.q)
+			return;
+	}
+}
+
+void Kopiec::linearSearchR(Zadanie Zad)
+{
+	for (auto i : Zadania)
+	{
+		if (i.r == Zad.r)
+			return;
+	}
+}
+
+int Kopiec::parent(int i)
+{
+	return (i - 1) / 2;
+}
+
+int Kopiec::left(int i)
+{
+	return (2 * i + 1);
+}
+
+int Kopiec::right(int i)
+{
+	return (2 * i + 2);
+}
+
+Zadanie Kopiec::getRoot()
+{
+	Zadanie Temp;
+
+	swap(*Zadania.begin(), *(Zadania.end()-1));
+	Temp = *(Zadania.end()-1);
+	Zadania.pop_back();
+	return Temp;
+}
+
+void Kopiec::minHeapify(int i)
+{
+	int l = left(i);
+	int r = right(i);
+	int smallest = i;
+	if (l < Zadania.size() && Zadania.at(l).r < Zadania.at(i).r)
+	{
+		smallest = l;
+	}
+	if (r < Zadania.size() && Zadania.at(r).r < Zadania.at(i).r)
+	{
+		smallest = r;
+	}
+	if (smallest != i)
+	{
+		swap(Zadania.at(i), Zadania.at(smallest));
+		minHeapify(smallest);
+	}
+}
+
+void Kopiec::maxHeapify(int i)
+{
+	int l = left(i);
+	int r = right(i);
+	int biggest = i;
+	if (l < Zadania.size() && Zadania.at(l).q > Zadania.at(i).q)
+	{
+		biggest = l;
+	}
+	if (r < Zadania.size() && Zadania.at(r).q > Zadania.at(i).q)
+	{
+		biggest = r;
+	}
+	if (biggest != i)
+	{
+		swap(Zadania.at(i), Zadania.at(biggest));
+		maxHeapify(biggest);
+	}
+}
+
+int schrage(int n, Kopiec R)
+{
+	Kopiec Q;
+	Zadanie Temp;
+	int t = 0, cmax = 0;
+
+	Q.maxHeapify(0);
+
+	do
+	{
+		if (!R.Zadania.empty() && R.Zadania.front().r > t && Q.Zadania.empty())
+		{
+			t = R.Zadania.front().r;
+		}
+		while (!R.Zadania.empty() && t >= R.Zadania.front().r)
+		{
+			Temp = R.getRoot();
+			Q.Zadania.push_back(Temp);
+			Q.maxHeapify(0);
+		}
+		Temp = Q.getRoot();
+		t += Temp.p;
+		cmax = max(cmax, t + Temp.q);
+	} while (!Q.Zadania.empty() || !R.Zadania.empty());
+
+	return cmax;
+}
+
+int schrageZP(int n, Kopiec R)
+{
+	Kopiec Q;
+	Zadanie Temp;
+	int t = 0, cmax = 0, p0 = 0, p1 = 0;
+
+	Q.maxHeapify(0);
+
+	do
+	{
+		if (!R.Zadania.empty() && R.Zadania.front().r > t && Q.Zadania.empty())
+		{
+			t = R.Zadania.front().r;
+		}
+		while (!R.Zadania.empty() && t >= R.Zadania.front().r)
+		{
+			Temp = R.getRoot();
+			Q.Zadania.push_back(Temp);
+			Q.maxHeapify(0);
+		}
+		Temp = Q.getRoot();
+		if (t + Temp.p <= R.Zadania.front().r || R.Zadania.empty())
+		{
+			t += Temp.p;
+			cmax = max(cmax, t + Temp.q);
+		}
+		else
+		{
+			p0 = t;
+			p1 = R.Zadania.front().r;
+			Temp.p -= p1 - p0;
+			t = p1;
+			Q.Zadania.push_back(Temp);
+			Q.maxHeapify(0);
+		}
+	} while (!Q.Zadania.empty() || !R.Zadania.empty());
 
 	return cmax;
 }
