@@ -40,6 +40,8 @@ struct Kopiec
 	vector<Zadanie> Zadania;
 
 	Zadanie getRoot();
+	void insertMax(Zadanie &Zad);
+	void insertMin(Zadanie &Zad);
 	void _delete(int i);
 	void maxHeapify(int i);
 	void minHeapify(int i);
@@ -87,8 +89,8 @@ int main()
 			T[j].id = j;
 			in >> T[j].r >> T[j].p >> T[j].q;
 			H.push_back(T[j]);
-			K.Zadania.push_back(T[j]);
 			Z[j] = T[j];
+			K.insertMin(T[j]);
 		}
 
 		make_heap(H.begin(), H.end(), greaterR());
@@ -378,8 +380,8 @@ Zadanie Kopiec::getRoot()
 {
 	Zadanie Temp;
 
-	swap(*Zadania.begin(), *(Zadania.end()-1));
-	Temp = *(Zadania.end()-1);
+	swap(*Zadania.begin(), *(Zadania.end() - 1));
+	Temp = *(Zadania.end() - 1);
 	Zadania.pop_back();
 	return Temp;
 }
@@ -393,7 +395,7 @@ void Kopiec::minHeapify(int i)
 	{
 		smallest = l;
 	}
-	if (r < Zadania.size() && Zadania.at(r).r < Zadania.at(i).r)
+	if (r < Zadania.size() && Zadania.at(r).r < Zadania.at(smallest).r)
 	{
 		smallest = r;
 	}
@@ -413,7 +415,7 @@ void Kopiec::maxHeapify(int i)
 	{
 		biggest = l;
 	}
-	if (r < Zadania.size() && Zadania.at(r).q > Zadania.at(i).q)
+	if (r < Zadania.size() && Zadania.at(r).q > Zadania.at(biggest).q)
 	{
 		biggest = r;
 	}
@@ -441,10 +443,11 @@ int schrage(int n, Kopiec R)
 		while (!R.Zadania.empty() && t >= R.Zadania.front().r)
 		{
 			Temp = R.getRoot();
-			Q.Zadania.push_back(Temp);
-			Q.maxHeapify(0);
+			R.minHeapify(0);
+			Q.insertMax(Temp);
 		}
 		Temp = Q.getRoot();
+		Q.maxHeapify(0);
 		t += Temp.p;
 		cmax = max(cmax, t + Temp.q);
 	} while (!Q.Zadania.empty() || !R.Zadania.empty());
@@ -469,10 +472,11 @@ int schrageZP(int n, Kopiec R)
 		while (!R.Zadania.empty() && t >= R.Zadania.front().r)
 		{
 			Temp = R.getRoot();
-			Q.Zadania.push_back(Temp);
-			Q.maxHeapify(0);
+			R.minHeapify(0);
+			Q.insertMax(Temp);
 		}
 		Temp = Q.getRoot();
+		Q.maxHeapify(0);
 		if (t + Temp.p <= R.Zadania.front().r || R.Zadania.empty())
 		{
 			t += Temp.p;
@@ -484,10 +488,33 @@ int schrageZP(int n, Kopiec R)
 			p1 = R.Zadania.front().r;
 			Temp.p -= p1 - p0;
 			t = p1;
-			Q.Zadania.push_back(Temp);
-			Q.maxHeapify(0);
+			Q.insertMax(Temp);
 		}
 	} while (!Q.Zadania.empty() || !R.Zadania.empty());
 
 	return cmax;
+}
+
+void Kopiec::insertMax(Zadanie &Zad)
+{
+	int i = Zadania.size();
+
+	Zadania.push_back(Zad);
+	while (i > 0 && Zadania.at(parent(i)).q < Zadania.at(i).q)
+	{
+		swap(Zadania.at(i), Zadania.at(parent(i)));
+		i = parent(i);
+	}
+}
+
+void Kopiec::insertMin(Zadanie &Zad)
+{
+	int i = Zadania.size();
+
+	Zadania.push_back(Zad);
+	while (i > 0 && Zadania.at(parent(i)).r > Zadania.at(i).r)
+	{
+		swap(Zadania.at(i), Zadania.at(parent(i)));
+		i = parent(i);
+	}
 }

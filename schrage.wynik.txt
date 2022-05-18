@@ -3,61 +3,61 @@ Schrage bez podziału na tablicy: 283
 Schrage z podziałem na tablicy: 221
 Schrage bez podziału na kopcu STL: 283
 Schrage z podziałem na kopcu STL: 221
-Schrage bez podziału na własnym kopcu: 257
-Schrage z podziałem na własnym kopcu: 257
+Schrage bez podziału na własnym kopcu: 283
+Schrage z podziałem na własnym kopcu: 221
 Zbior danych nr 1
 Schrage bez podziału na tablicy: 3109
 Schrage z podziałem na tablicy: 3026
 Schrage bez podziału na kopcu STL: 3109
 Schrage z podziałem na kopcu STL: 3026
-Schrage bez podziału na własnym kopcu: 4948
-Schrage z podziałem na własnym kopcu: 4948
+Schrage bez podziału na własnym kopcu: 3109
+Schrage z podziałem na własnym kopcu: 3026
 Zbior danych nr 2
 Schrage bez podziału na tablicy: 3708
 Schrage z podziałem na tablicy: 3654
 Schrage bez podziału na kopcu STL: 3708
 Schrage z podziałem na kopcu STL: 3654
-Schrage bez podziału na własnym kopcu: 5713
-Schrage z podziałem na własnym kopcu: 5982
+Schrage bez podziału na własnym kopcu: 3708
+Schrage z podziałem na własnym kopcu: 3654
 Zbior danych nr 3
 Schrage bez podziału na tablicy: 3353
 Schrage z podziałem na tablicy: 3309
 Schrage bez podziału na kopcu STL: 3332
 Schrage z podziałem na kopcu STL: 3309
-Schrage bez podziału na własnym kopcu: 3615
-Schrage z podziałem na własnym kopcu: 3615
+Schrage bez podziału na własnym kopcu: 3335
+Schrage z podziałem na własnym kopcu: 3309
 Zbior danych nr 4
 Schrage bez podziału na tablicy: 3235
 Schrage z podziałem na tablicy: 3172
 Schrage bez podziału na kopcu STL: 3235
 Schrage z podziałem na kopcu STL: 3172
-Schrage bez podziału na własnym kopcu: 5552
-Schrage z podziałem na własnym kopcu: 5552
+Schrage bez podziału na własnym kopcu: 3235
+Schrage z podziałem na własnym kopcu: 3172
 Zbior danych nr 5
 Schrage bez podziału na tablicy: 3625
 Schrage z podziałem na tablicy: 3618
 Schrage bez podziału na kopcu STL: 3625
 Schrage z podziałem na kopcu STL: 3618
-Schrage bez podziału na własnym kopcu: 5596
-Schrage z podziałem na własnym kopcu: 5535
+Schrage bez podziału na własnym kopcu: 3625
+Schrage z podziałem na własnym kopcu: 3618
 Zbior danych nr 6
 Schrage bez podziału na tablicy: 3446
 Schrage z podziałem na tablicy: 3439
 Schrage bez podziału na kopcu STL: 3446
 Schrage z podziałem na kopcu STL: 3439
-Schrage bez podziału na własnym kopcu: 5442
-Schrage z podziałem na własnym kopcu: 5589
+Schrage bez podziału na własnym kopcu: 3446
+Schrage z podziałem na własnym kopcu: 3439
 Zbior danych nr 7
 Schrage bez podziału na tablicy: 3862
 Schrage z podziałem na tablicy: 3820
 Schrage bez podziału na kopcu STL: 3862
 Schrage z podziałem na kopcu STL: 3820
-Schrage bez podziału na własnym kopcu: 4844
-Schrage z podziałem na własnym kopcu: 4914
+Schrage bez podziału na własnym kopcu: 3862
+Schrage z podziałem na własnym kopcu: 3820
 Zbior danych nr 8
 Schrage bez podziału na tablicy: 3645
 Schrage z podziałem na tablicy: 3633
 Schrage bez podziału na kopcu STL: 3645
 Schrage z podziałem na kopcu STL: 3633
-Schrage bez podziału na własnym kopcu: 5940
-Schrage z podziałem na własnym kopcu: 5940
+Schrage bez podziału na własnym kopcu: 3645
+Schrage z podziałem na własnym kopcu: 3633
